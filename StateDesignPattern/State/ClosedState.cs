@@ -3,7 +3,7 @@ using System;
 
 namespace StateDesignPattern.State
 {
-    internal class ClosedWorkItemState : IWorkItemState
+    internal class ClosedState : IState
     {
         public void SetNextState(WorkItemContext workItemContext)
         {
@@ -14,7 +14,6 @@ namespace StateDesignPattern.State
         {
             Console.WriteLine("In Closed State");
         }
-
 
         public void SetPreviousState(WorkItemContext workItemContext)
         {

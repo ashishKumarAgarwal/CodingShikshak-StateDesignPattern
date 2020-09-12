@@ -1,12 +1,10 @@
-﻿using System;
-using StateDesignPattern.Context;
+﻿using StateDesignPattern.Context;
+using System;
 
 namespace StateDesignPattern.State
 {
-    internal class InQAWorkItemState : IWorkItemState
+    internal class QAState : IState
     {
-
-   
         public void PrintCurrentState()
         {
             Console.WriteLine("In QA state");
@@ -14,13 +12,12 @@ namespace StateDesignPattern.State
 
         public void SetNextState(WorkItemContext workItemContext)
         {
-            workItemContext.CurrentWorkItemState=new ClosedWorkItemState();
+            workItemContext.TransitionState(new ClosedState());
         }
 
         public void SetPreviousState(WorkItemContext workItemContext)
         {
-            workItemContext.CurrentWorkItemState = new InProgressWorkItemState();
-
+            workItemContext.TransitionState(new InProgressState());
         }
     }
 }

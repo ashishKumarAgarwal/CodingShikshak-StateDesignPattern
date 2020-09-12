@@ -1,26 +1,29 @@
-﻿using System;
-using StateDesignPattern.Context;
+﻿using StateDesignPattern.Context;
+using StateDesignPattern.State;
+using System;
 
 namespace StateDesignPattern
 {
-    class Client
+    internal class Client
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            WorkItemContext workItemContext=new WorkItemContext();
+            WorkItemContext workItemContext = new WorkItemContext();
+            workItemContext.TransitionState(new InProgressState());
+            workItemContext.PrintCurrentState();
 
+            workItemContext.TransitionState(new ClosedState());
             workItemContext.PrintCurrentState();
-            workItemContext.SetNextState();
+            workItemContext.TransitionState(new InProgressState());
             workItemContext.PrintCurrentState();
-            workItemContext.SetNextState();
-            workItemContext.PrintCurrentState(); 
-            workItemContext.SetNextState();
-            workItemContext.PrintCurrentState();
-            workItemContext.SetNextState();
-            workItemContext.PrintCurrentState();
+            //workItemContext.SetNextState();
+            //workItemContext.PrintCurrentState();
+            //workItemContext.SetNextState();
+            //workItemContext.PrintCurrentState();
+            //workItemContext.SetNextState();
+            //workItemContext.PrintCurrentState();
 
             Console.ReadLine();
-
         }
     }
 }

@@ -3,23 +3,21 @@ using System;
 
 namespace StateDesignPattern.State
 {
-    internal class OpenWorkItemState : IWorkItemState
+    internal class InProgressState : IState
     {
-      
         public void PrintCurrentState()
         {
-            Console.WriteLine("In Open state");
+            Console.WriteLine("In Inprogress state");
         }
 
         public void SetNextState(WorkItemContext workItemContext)
         {
-            workItemContext.CurrentWorkItemState = new InProgressWorkItemState();
+            workItemContext.TransitionState(new QAState());
         }
 
         public void SetPreviousState(WorkItemContext workItemContext)
         {
-            Console.WriteLine("This ticket is in open state");
-
+            workItemContext.TransitionState(new OpenState());
         }
     }
 }
