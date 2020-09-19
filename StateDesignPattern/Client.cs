@@ -1,29 +1,23 @@
-﻿using StateDesignPattern.Context;
-using StateDesignPattern.State;
-using System;
+﻿using System;
+using StateDesignPattern.Context;
 
 namespace StateDesignPattern
 {
     internal class Client
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            WorkItemContext workItemContext = new WorkItemContext();
-            workItemContext.TransitionState(new InProgressState());
-            workItemContext.PrintCurrentState();
+            Account account = new Account();
+            account.Deposit(1000);
+            account.GetCurrentBenefits();
 
-            workItemContext.TransitionState(new ClosedState());
-            workItemContext.PrintCurrentState();
-            workItemContext.TransitionState(new InProgressState());
-            workItemContext.PrintCurrentState();
-            //workItemContext.SetNextState();
-            //workItemContext.PrintCurrentState();
-            //workItemContext.SetNextState();
-            //workItemContext.PrintCurrentState();
-            //workItemContext.SetNextState();
-            //workItemContext.PrintCurrentState();
+            account.Deposit(10000.0);
+            account.GetCurrentBenefits();
 
-            Console.ReadLine();
+            account.Withdraw(4000);
+            account.GetCurrentBenefits();
+
+            Console.ReadKey();
         }
     }
 }
